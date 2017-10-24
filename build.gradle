@@ -1,0 +1,38 @@
+group 'com.example.service.content'
+version '1.0-SNAPSHOT'
+
+buildscript {gradle
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.7.RELEASE")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'war'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'application'
+
+sourceCompatibility = 1.8
+
+bootRepackage{
+    mainClass = 'com.example.service.content.Application'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web")
+    compile("org.springframework.boot:spring-boot-starter-actuator")
+    compileOnly('org.springframework.boot:spring-boot-starter-tomcat')
+
+    compile('com.squareup.retrofit2:retrofit:2.3.0')
+    compile('com.squareup.retrofit2:converter-jackson:2.3.0')
+
+    compile("org.springframework.boot:spring-boot-starter-data-redis")
+}
